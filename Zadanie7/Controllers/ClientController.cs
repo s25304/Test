@@ -18,10 +18,17 @@ public class ClientController : ControllerBase
     [HttpGet(Name = "Clients/{id}")]
     public IActionResult  Get(int id)
     {
-        var client = _context.Clients.Find(id);
-        
-        var clientDto = new ClientDto(client);
-        return Ok(clientDto);
+        try
+        {
+            var client = _context.Clients.Find(id);
+            var clientDto = new ClientDto(client);
+            return Ok(clientDto);
+        }
+        catch (Exception e)
+        {
+            return BadRequest();
+        }
+
     }
 
     [HttpPost(Name = "Clients/{IdClient}/Subscriptions{IdSubscription")]
