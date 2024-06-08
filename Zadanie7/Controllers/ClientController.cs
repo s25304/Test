@@ -32,9 +32,10 @@ public class ClientController : ControllerBase
     }
 
     [HttpPost(Name = "Clients/{IdClient}/Subscriptions{IdSubscription")]
-    public IActionResult tmpname([FromBody] Payment payment)
+    public IActionResult tmpname([FromBody] Payment payment, int IdClient, int IdSubscription)
     {
         return Ok(payment);
+        //todo
     }
    
 }
