@@ -19,6 +19,7 @@ public class ClientController : ControllerBase
     public IActionResult  Get(int id)
     {
         var client = _context.Clients.Find(id);
+        
         var clientDto = new ClientDto(client);
         return Ok(clientDto);
     }

@@ -1,4 +1,5 @@
-﻿using Kolokwium.Models;
+﻿using System.Collections;
+using Kolokwium.Models;
 
 namespace Zadanie7.DTOs;
 
@@ -12,8 +13,12 @@ public class ClientDto
         LastName = src.LastName;
         Email = src.Email;
         Phone = src.Phone;
-        Subscription = null;
-
+        Subscriptions = new List<SubscriptionDto>();
+        
+        foreach (var Sale in src.Sales)
+        {
+            Subscriptions.Add(new SubscriptionDto(Sale.Subscription));
+        }
     }
     public int IdClient { get; set; }
     
@@ -28,6 +33,6 @@ public class ClientDto
     
     public string Phone { get; set; }
     
-   public Subscription Subscription { get; set; }
+   public List<SubscriptionDto> Subscriptions { get; set; }
     
 }
